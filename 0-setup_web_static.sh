@@ -14,8 +14,14 @@
 
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install nginx -y
-sudo mkdir -p /data/web_static/current/
 sudo mkdir -p /data/web_static/releases/test/ /data/web_static/shared
-echo "Nginx Configuration working. Serving Test Page..." | sudo tee /data/web_static/releases/test/index.html
+echo "<html>" | sudo tee /data/web_static/releases/test/index.html <<EOF
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>
+EOF
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 sudo chown -hR ubuntu:ubuntu /data/
