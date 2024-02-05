@@ -5,7 +5,7 @@
     of specified directory.
 """
 
-from datetime import datetime 
+from datetime import datetime
 from fabric.api import local
 from os.path import isdir
 
@@ -25,4 +25,5 @@ def do_pack():
         return archive_path
 
     except:
+        print("An error occurred while creating the archive.")
         return None
