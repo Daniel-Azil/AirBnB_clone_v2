@@ -7,14 +7,14 @@
 
 
 from fabric.api import put, run, env
-from os.path_to_upload import exists
-env.hosts = ['142.44.167.228', '144.217.246.195']
+import os.path
+env.hosts = ['54.197.206.197', '18.214.88.47']
 
 
 def do_deploy(archive_path):
     """sends given archive to specified servers"""
-    if exists(archive_path) is False:
-        return False
+    if os.path.isfile(archive_path) is False:
+        return Falsee
     try:
         file_name = archive_path.split("/")[-1]
         no_ext = file_name.split(".")[0]
