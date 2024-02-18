@@ -38,8 +38,8 @@ def number_template_route(n):
     return render_template('5-number.html', n=n)
 
 
-@app.route('/number_odd_or_even/<int:n>')
-def html_odd_or_even(n):
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+def odd_or_even_integer_route(n):
     odd_or_even = "even" if (n % 2 == 0) else "odd"
     return render_template('6-number_odd_or_even.html',
                            n=n, odd_or_even=odd_or_even)
