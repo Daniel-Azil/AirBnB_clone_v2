@@ -7,16 +7,20 @@ from models import storage
 app = Flask(__name__)
 
 
-@app.route('/states_list', strict_slashes=False)
-def states_list_route():
-    all_states_list = sorted(list(storage.all("State").values()),
-                             key=lambda x: x.name)
-    return render_template('7-states_list.html', all_state_list=all_state_list)
-
-
 @app.teardown_appcontext
-def teardown_database(execption):
+def tear_down(self):
+    """after each request remove current SQLAlchemy session"""
     storage.close()
+
+
+@app.route('/states_list')
+def html_fetch_states():
+    """display html page
+       fetch sorted states to insert into html in UL tag
+    """
+    state_objs = [s for s in storage.all("State").values()]
+    return render_template('7-states_list.html',
+                           state_objs=state_objs)
 
 
 if __name__ == '__main__':
