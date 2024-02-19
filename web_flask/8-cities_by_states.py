@@ -60,10 +60,10 @@ def states_list_route():
 
 
 @app.route('/cities_by_states')
-def html_fetch_cities_by_states():
-    state_objs = [s for s in storage.all("State").values()]
+def cities_fetcher_route():
+    state_list = [s for s in storage.all("State").values()]
     return render_template('8-cities_by_states.html',
-                           state_objs=state_objs)
+                           state_list=state_list)
 
 
 if __name__ == '__main__':
