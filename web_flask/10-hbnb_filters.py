@@ -76,5 +76,13 @@ def state_id_route(id):
                            state_list=state_list)
 
 
+@app.route('/hbnb_filters')
+def template_route():
+    state_list = [s for s in storage.all("State").values()]
+    amenity_list = [a for a in storage.all("Amenity").values()]
+    return render_template('10-hbnb_filters.html',
+                           state_list=state_list, amenity_list=amenity_list)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='5000')
